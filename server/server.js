@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const CORS = require('cors')
 require("dotenv").config();
 
 const URI = process.env.MONGODB_URL;
