@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const constants = require('../constants')
+const { UserRolesEnum } = require('../constants');
 
 const userSchema = mongoose.Schema(
     {
@@ -8,11 +8,11 @@ const userSchema = mongoose.Schema(
                 url: String,
             },
             default:{
-                url:'https://i.pinimg.com/736x/6e/1d/aa/6e1daa9dc3ea37be98f47a69725d0684.jpg',
+                url: 'https://i.pinimg.com/736x/6e/1d/aa/6e1daa9dc3ea37be98f47a69725d0684.jpg',
             }
         },
         username:{
-            type:String,
+            type: String,
             required: true,
             unique: true,
         },
@@ -24,15 +24,16 @@ const userSchema = mongoose.Schema(
         },
         password:{
             type: String,
-            required: [true, "Password is Required"],
+            required: true,
         },
         role:{
             type: String,
-            enum: constants.AvailableUserRoles,
-            default: constants.UserRolesEnum.USER,
+            enum: [UserRolesEnum.ADMIN, UserRolesEnum.USER],
+            default: UserRolesEnum.USER, 
             required: true,
         }
-    },{ timestamps: true }
+    }, 
+    { timestamps: true }
 );
 
-module.exports = mongoose,model("Users", userSchema)
+module.exports = mongoose.model("Users", userSchema);

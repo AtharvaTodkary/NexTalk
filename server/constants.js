@@ -1,10 +1,5 @@
-
-const constants = {
-    UserRolesEnum : {
-        ADMIN: "ADMIN",
-        USER: "USER"
-    },
-    AvailableUserRoles : Object.values(UserRolesEnum),
+// constants.js
+module.exports.UserRolesEnum = {
+    ADMIN: 'ADMIN',
+    USER: 'USER',
 };
-
-module.exports = constants;
